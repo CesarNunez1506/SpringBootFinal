@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/shop.css">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <div class="container mt-5">
+        <header class="text-center mb-4">
+            <h1 th:text="${product.name}"></h1>
+            <a href="/shop/products" class="btn btn-secondary">Volver al catálogo</a>
+        </header>
+
+        <div class="row">
+            <div class="col-md-6">
+                <img class="img-fluid" th:src="@{/images/{image}(image=${product.imageUrl})}" alt="Imagen del producto">
+            </div>
+            <div class="col-md-6">
+                <div class="product-info">
+                    <p class="lead" th:text="${product.description}"></p>
+                    <p class="h5" th:text="'Precio: ' + ${product.price}"></p>
+                    <p class="h5" th:text="'Categoría: ' + ${product.categoryName}"></p>
+                    <button class="btn btn-primary mt-3">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/shop.js"></script>
+</body>
+</html>

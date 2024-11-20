@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Producto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Crear Producto</h1>
+        <form action="/admin/products/create" method="post">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <input type="text" id="description" name="description" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Precio</label>
+                <input type="number" id="price" name="price" class="form-control" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Categoría</label>
+                <select id="category" name="category" class="form-control" required>
+                    <option value="" disabled selected>Seleccionar categoría</option>
+                    <!-- Aquí se pueden agregar las categorías dinámicamente -->
+                    <option value="1">Categoría 1</option>
+                    <option value="2">Categoría 2</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Crear Producto</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

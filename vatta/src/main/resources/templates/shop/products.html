@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/shop.css">
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <div class="container mt-5">
+        <header class="text-center mb-4">
+            <h1>Catálogo de Productos</h1>
+            <form action="/shop/products" method="get" class="form-inline justify-content-center">
+                <input type="text" name="search" class="form-control mr-2" placeholder="Buscar productos..." value="${searchQuery}">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </header>
+
+        <div class="filters mb-4">
+            <h3>Filtrar por Categoría:</h3>
+            <form action="/shop/products" method="get" class="form-inline">
+                <select name="category" class="form-control mr-2">
+                    <option value="">Seleccionar categoría</option>
+                    <!-- Aquí agregamos las categorías dinámicamente -->
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                </select>
+                <button type="submit" class="btn btn-secondary">Filtrar</button>
+            </form>
+        </div>
+
+        <div class="products">
+            <h2>Productos</h2>
+            <div class="row">
+                <!-- Mostrar cada producto -->
+                <div class="col-md-4 mb-4" th:each="product : ${products}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.name}"></h5>
+                            <p class="card-text" th:text="${product.description}"></p>
+                            <p class="card-text"><strong>Precio: </strong><span th:text="${product.price}"></span></p>
+                            <a th:href="@{/products/{id}(id=${product.id})}" class="btn btn-primary">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/shop.js"></script>
+</body>
+</html>
