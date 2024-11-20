@@ -78,32 +78,4 @@ public class AdminController {
         return "admin/categories/create"; // Asegúrate de tener esta vista
     }
 
-    // Guardar una nueva categoría
-    @PostMapping("/categories")
-    public String createCategory(@ModelAttribute("categoryDTO") CategoryDTO categoryDTO) {
-        categoryService.createCategory(categoryDTO); // Asegúrate de tener este método en CategoryService
-        return "redirect:/admin/categories"; // Redirige a la lista de categorías
-    }
-
-    // Editar una categoría
-    @GetMapping("/categories/edit/{id}")
-    public String showEditCategoryForm(@PathVariable Long id, Model model) {
-        CategoryDTO categoryDTO = categoryService.getCategoryDTOById(id); // Asegúrate de tener este método
-        model.addAttribute("categoryDTO", categoryDTO);
-        return "admin/categories/edit"; // Asegúrate de tener esta vista
-    }
-
-    // Actualizar una categoría
-    @PostMapping("/categories/edit/{id}")
-    public String updateCategory(@PathVariable Long id, @ModelAttribute("categoryDTO") CategoryDTO categoryDTO) {
-        categoryService.updateCategory(id, categoryDTO); // Asegúrate de tener este método en CategoryService
-        return "redirect:/admin/categories"; // Redirige a la lista de categorías
-    }
-
-    // Eliminar una categoría
-    @PostMapping("/categories/delete/{id}")
-    public String deleteCategory(@PathVariable Long id) {
-        categoryService.deleteCategory(id); // Asegúrate de tener este método en CategoryService
-        return "redirect:/admin/categories"; // Redirige a la lista de categorías
-    }
 }
